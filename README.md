@@ -11,5 +11,3 @@
 - lijst met registers opgesteld (registers.txt)
 - **_jeremy gaat rp6 tutorial bekijken_**
 - **_iedereen bladert datasheets door/zoekt naar registers_**
- 
-bvghvh
