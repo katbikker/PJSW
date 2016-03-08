@@ -9,5 +9,5 @@
 - vragen gesteld over eisen robot bij opdrachtgever
 - lijst met eisen voor robot opgesteld (eisen.txt)
 - lijst met registers opgesteld (registers.txt)
-- jeremy gaat rp6 tutorial bekijken
-- iedereen bladert datasheets door/zoekt naar registers
+- *jeremy gaat rp6 tutorial bekijken*
+- *iedereen bladert datasheets door/zoekt naar registers*
