@@ -3,14 +3,14 @@
 
 **07-03-2016**
 
--github project aangemaakt
+- github project aangemaakt
+- kluis geregeld (kluisnummer 6)
+- robot hardware in ontvangst genomen en bekeken
 
--robot hardware in ontvangst genomen en bekeken
+- vragen gesteld over eisen robot bij opdrachtgever
 
--kluis geregeld (kluisnummer 6)
+- lijst met eisen voor robot opgesteld (eisen.txt)
 
--vragen gesteld over eisen robot bij opdrachtgever
+- lijst met registers opgesteld (registers.txt)
 
--lijst met eisen voor robot opgesteld (eisen.txt)
-
--lijst met registers opgesteld (registers.txt)
+- jeremy gaat rp6 tutorial bekijken
