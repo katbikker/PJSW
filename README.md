@@ -4,8 +4,8 @@
 **08-03-2016**
 
 - iedereen heeft github account aangemaakt
+- extrainfo.txt aangemaakt (rp6 tutorial)
 - eisen.txt update
-- extrainfo.txt aangemaakt
 
 **07-03-2016**
 
