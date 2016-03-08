@@ -2,7 +2,9 @@
 ## Backlog
 
 **07-03-2016**
+
 -github project aangemaakt
+
 -robot hardware in ontvangst genomen en bekeken
 -kluis geregeld (kluisnummer 6)
 -vragen gesteld over eisen robot bij opdrachtgever
