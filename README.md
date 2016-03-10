@@ -1,10 +1,13 @@
 # **Project Software**
 ## Backlog
 
+**10-03-2016**
+
+- rp6 aansluitingen met comment aangemaakt
+
 **09-03-2016**
 
 - eisen.txt update
-- rp6 aansluitingen met comment aangemaakt
 
 **08-03-2016**
 
