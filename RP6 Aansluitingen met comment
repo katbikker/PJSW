@@ -1,3 +1,6 @@
+
+// Bron(tutorial): http://www.benhup.com/?mf=eduntech&sf=rp6
+
 // I/O PORT pin definitions
 // These definitions simplify reading and understanding the source code.
 // Definitions taken from: RP6Lib\RP6base\RP6RobotBase.h
