@@ -12,7 +12,7 @@ Informatie verzenden.
 Omdraaien.
 
 Handmatig = 
-Toetsenbord : wasd.
+Toetsenbord : W en S.
 
 W = versnellen
 S = afremmen  + achteruit
