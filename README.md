@@ -4,6 +4,7 @@
 **09-03-2016**
 
 - eisen.txt update
+- rp6 aansluitingen met comment aangemaakt
 
 **08-03-2016**
 
