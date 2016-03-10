@@ -11,6 +11,8 @@
 // DDRxy = 1 and PORTxy = 1 ==> Output high
 // "=1" indicates that the appropriate bit is set.
 
+#define F_CPU 8000000 //Base: 8.00MHz  - DO NOT CHANGE! (Volgens blackboard)
+
 // PORTA
 #define UBAT 		    (1 << PINA7) 	// ADC7 (Input); Battery current
 #define MCURRENT_L	(1 << PINA6) 	// ADC6 (Input); Motor current left
