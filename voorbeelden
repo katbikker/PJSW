@@ -1,1 +1,19 @@
 
+#include <avr/io.h>                        /* Defines pins, ports, etc */
+#include <util/delay.h>                     /* Functions to waste time */
+#include "RP6aansluitingen.h"
+
+int main(void)
+{
+    DDRD = 0b00110000;
+    DDRC = 0b00001100;
+    PORTD = 0b00110000;
+    while(1)
+    {
+        PORTC = 0b00001100;
+        _delay_ms(1000);
+        PORTC = 0b00000000;
+        _delay_ms(1000);
+    }
+}
+
