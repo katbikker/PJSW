@@ -1,6 +1,20 @@
 # **Project Software**
 ## Backlog
 
+**19-03-2016**
+
+- github opgeschoond
+- makefile toegevoegd
+- macros toegevoegd aan robotHeader.h (voorheen rp6aansluitingen.h)
+
+**11-03-2016**
+
+- robot rijdend gekregen
+
+**10-03-2016**
+
+- rp6 aansluitingen met comment aangemaakt
+
 **09-03-2016**
 
 - eisen.txt update
