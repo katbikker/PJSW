@@ -4,6 +4,8 @@
 **19-03-2016**
 
 - github opgeschoond
+- makefile toegevoegd
+- macros toegevoegd
 
 **11-03-2016**
 
