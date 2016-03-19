@@ -5,7 +5,7 @@
 
 - github opgeschoond
 - makefile toegevoegd
-- macros toegevoegd
+- macros toegevoegd aan robotHeader.h (voorheen rp6aansluitingen.h)
 
 **11-03-2016**
 
