@@ -20,7 +20,7 @@
 #define F_CPU 8000000 //Base: 8.00MHz  - DO NOT CHANGE! (Volgens blackboard)
 
 // PORTA
-#define UBAT 		    (1 << PINA7) 	// ADC7 (Input); Battery current
+#define UBAT        (1 << PINA7) 	// ADC7 (Input); Battery current
 #define MCURRENT_L	(1 << PINA6) 	// ADC6 (Input); Motor current left
 #define MCURRENT_R 	(1 << PINA5) 	// ADC5 (Input); Motor current right
 #define E_INT1 		  (1 << PINA4) 	// INT1 (input per default... can be output)
@@ -50,7 +50,7 @@
 #define SCL 		  (1 << PINC0) 	// I2C Clock (Output (Master), Input (Slave))
 // ---------------------------------------------------
 // PORTD
-#define IRCOMM		(1 << PIND7) 	// Output; DO NOT USE THIS PIN BY YOURSELF!
+#define IRCOMM    (1 << PIND7) 	// Output; DO NOT USE THIS PIN BY YOURSELF!
 #define ACS_PWR 	(1 << PIND6) 	// Output; Regulate short/med/long ACS sensing
 #define MOTOR_R 	(1 << PIND5) 	// PWM Output (OC1A); Right motor on (1)/off (0)
 #define MOTOR_L 	(1 << PIND4) 	// PWM Output (OC1B); Left motor on (1)/off (0)
