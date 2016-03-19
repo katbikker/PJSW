@@ -1,5 +1,5 @@
 Sprint 2 (25-03-2016):
   Jeremy + Donnelly: PWM van motor, gedrag van bumpers/sensoren
   Donnelly: Scrum account regelen
-  Gerson: Xbee verbinding fussen RP6 en Xbee)
+  Gerson: Xbee verbinding fussen RP6 en Xbee
   Steven + Martijn: PING sensor werkend, terugkoppelen aan Jeremy + Donnelly
