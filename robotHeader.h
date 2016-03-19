@@ -48,11 +48,11 @@
 #define SCL 		(1 << PINC0) // I2C Clock (Output (Master), Input (Slave))
 // ---------------------------------------------------
 // PORTD
-// #define IRCOMM  	(1 << PIND7) // Output; DO NOT USE THIS PIN BY YOURSELF!
-#define ACS_PWR 	(1 << PIND6) // Output; Regulate short/med/long ACS sensing
+#define IRCOMM  	(1 << PIND7) // Output; DO NOT USE THIS PIN BY YOURSELF!
+#define ACS_PWR		(1 << PIND6) // Output; Regulate short/med/long ACS sensing
 #define MOTOR_R 	(1 << PIND5) // PWM Output (OC1A); Right motor on (1)/off (0)
 #define MOTOR_L 	(1 << PIND4) // PWM Output (OC1B); Left motor on (1)/off (0)
 #define ENC_R 		(1 << PIND3) // INT1 (Input); Wheel encoder_R (revolution count)
 #define ENC_L 		(1 << PIND2) // INT0 (Input); Wheel encoder_L (revolution count)
-#define TX 		(1 << PIND1) // USART TX (Output)
+#define TX 		 (1 << PIND1) // USART TX (Output)
 #define RX 		(1 << PIND0) // USART RX (Input)
