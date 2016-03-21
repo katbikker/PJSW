@@ -1,1 +1,21 @@
 Eisen PJSW:
+
+Welke richting
+Afstand bepalen
+Draadloze communicatie
+Handbesturing en autonoom
+Achteruit buzzer
+Binnen 7cm stoppen
+
+Stoppen = 
+Informatie verzenden.
+30sec stil staan.
+Omdraaien.
+
+Handmatig = 
+Toetsenbord : W en S.
+
+W = versnellen
+S = afremmen  + achteruit
+Snelheid weergeven.
+Batterij spanning over weergeven.
