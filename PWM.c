@@ -35,9 +35,12 @@ int main(void)
     _delay_ms(1000);
     stop();
     }
+    if(PINB & 0b00000001 | PINC & 0b01000000)
+    {
     achteruit(64);
     _delay_ms(500);
     stop();
+    }
 
     return 0;
 }
