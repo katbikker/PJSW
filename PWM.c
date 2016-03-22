@@ -15,10 +15,19 @@ int main(void)
     void stop();//zet de pwm klok uit en zet de compare registers op 0.
     void stuur(char, char, uint8_t);//(V/A, L/R, snelheid) stelt de rijrichting, stuurrichting en snelheid in. snelheid = ("ingevoerde waarde" / 255 * 100%)
     void draai(char, uint8_t);//(L/R, snelheid) stelt de draairichting in. draaisnelheid = ("ingevoerde waarde" / 255 * 100%)
+    
+    char v = 'v';
+    char a = 'a';
+    char l = 'l';
+    char r = 'r';
 
     vooruit(128);
     _delay_ms(1000);
     achteruit(128);
+    _delay_ms(1000);
+    stuur(v, l, 128);
+    _delay_ms(1000);
+    draai(l, 128);
     _delay_ms(1000);
     stop();
 
