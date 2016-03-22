@@ -5,8 +5,9 @@
 
 int main(void)
 {
-    DDRC |= (1<<2) | (1<<3);//zet DDR van de te gebruiken poorten.
-    DDRD |= (1<<5) | (1<<4);//zet DDR van de te gebruiken poorten.
+    DDRB |= (0<<0); //zet DDR van de linker bumper.
+    DDRC |= (1<<2) | (1<<3) | (0<<6);;//zet DDR van de rijrichting en de rechter bumper.
+    DDRD |= (1<<5) | (1<<4);//zet DDR van de motor.
     PORTC |= (0<<2) | (0<<3);//zet voor de zekerheid de te gebruiken poorten op 0.
     PORTD |= (0<<5) | (0<<4);//zet voor de zekerheid de te gebruiken poorten op 0.
 
@@ -21,6 +22,9 @@ int main(void)
     char l = 'l';
     char r = 'r';
 
+    
+    while(!(PINB & 0b00000001 | PINC & 0b01000000)) // Kijk of de bumper iets raakt.
+    {
     vooruit(128);
     _delay_ms(1000);
     achteruit(128);
@@ -30,6 +34,13 @@ int main(void)
     draai(l, 128);
     _delay_ms(1000);
     stop();
+    }
+    if(PINB & 0b00000001 | PINC & 0b01000000)
+    {
+    achteruit(64);
+    _delay_ms(500);
+    stop();
+    }
 
     return 0;
 }
