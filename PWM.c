@@ -21,9 +21,8 @@ int main(void)
     char a = 'a';
     char l = 'l';
     char r = 'r';
-
     
-    while(!(PINB & 0b00000001 | PINC & 0b01000000)) // Kijk of de bumper iets raakt.
+    while(!(PINB & 0b00000001 | PINC & 0b01000000))// zolang de bumper niets raakt doet hij dit.
     {
     vooruit(128);
     _delay_ms(1000);
@@ -34,8 +33,10 @@ int main(void)
     draai(l, 128);
     _delay_ms(1000);
     stop();
+    break;
     }
-    if(PINB & 0b00000001 | PINC & 0b01000000)
+    
+    if(PINB & 0b00000001 | PINC & 0b01000000)//alleen als je uit de while loop bent gegaan omdat de bumper geraakt is.
     {
     achteruit(64);
     _delay_ms(500);
