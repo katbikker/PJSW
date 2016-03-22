@@ -26,12 +26,12 @@ void stop();
 
 void vooruit()
 {
-    PORTC &= ~(1<<2) & ~(1<<3);//rijrichting vooruit
+    PORTC &= ~(1<<2) & ~(1<<3);//rijrichting vooruit.
 }
 
 void achteruit();
 {
-    PORTC |= (1<<2) | (1<<3);//rijrichting achteruit
+    PORTC |= (1<<2) | (1<<3);//rijrichting achteruit.
 }
 
 void rechtdoor(uint8_t snelheid)
@@ -44,17 +44,17 @@ void rechtdoor(uint8_t snelheid)
 
 void links(uint8_t snelheid)
 {
-    if(snelheid == 0)
+    if(snelheid == 0)//draaien.
     {
         PORTC |= (1<<2)//links achteruit, rechts vooruit.
         PORTC &= ~(1<<3);
 
         OCR1AH = 0;//we gebruiken maar 8 bits dus het hoge register is niet nodig. voor de zekerheid op 0.
-        OCR1AL = snelheid;//stelt het compare register gelijk aan de ingevoerde waarde. dit bepaalt de snelheid.
+        OCR1AL = 128;//stelt het compare register gelijk aan de ingevoerde waarde.
         OCR1BH = 0;//we gebruiken maar 8 bits dus het hoge register is niet nodig. voor de zekerheid op 0.
-        OCR1BL = snelheid;//stelt het compare register gelijk aan de ingevoerde waarde. dit bepaalt de snelheid.
+        OCR1BL = 128;//stelt het compare register gelijk aan de ingevoerde waarde.
     }
-    else
+    else//sturen.
     {
         OCR1AH = 0;//we gebruiken maar 8 bits dus het hoge register is niet nodig. voor de zekerheid op 0.
         OCR1AL = snelheid;//stelt het compare register gelijk aan de ingevoerde waarde. dit bepaalt de snelheid.
@@ -65,18 +65,18 @@ void links(uint8_t snelheid)
 
 void rechts(uint8_t snelheid)
 {
-    if(snelheid == 0)
+    if(snelheid == 0)//draaien.
     {
         PORTC |= (1<<3)//rechts achteruit, links vooruit.
         PORTC &= ~(1<<2);
 
         OCR1AH = 0;//we gebruiken maar 8 bits dus het hoge register is niet nodig. voor de zekerheid op 0.
-        OCR1AL = snelheid;//stelt het compare register gelijk aan de ingevoerde waarde. dit bepaalt de snelheid.
+        OCR1AL = 128;//stelt het compare register gelijk aan de ingevoerde waarde.
         OCR1BH = 0;//we gebruiken maar 8 bits dus het hoge register is niet nodig. voor de zekerheid op 0.
-        OCR1BL = snelheid;//stelt het compare register gelijk aan de ingevoerde waarde. dit bepaalt de snelheid.
+        OCR1BL = 128;//stelt het compare register gelijk aan de ingevoerde waarde.
 
     }
-    else
+    else//sturen.
     {
         OCR1AH = 0;//we gebruiken maar 8 bits dus het hoge register is niet nodig. voor de zekerheid op 0.
         OCR1AL = snelheid / 2;//hij draait langzamer dan de andere kant dus hij stuurt.
