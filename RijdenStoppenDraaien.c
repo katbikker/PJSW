@@ -20,13 +20,17 @@ int main(void)
 }
 void rijden()
 {
-    vooruit(128);
-    while(!(PINB & 0b00000001 | PINC & 0b01000000));// zolang de bumper niets raakt doet hij dit.
-    stop();
-    _delay_ms(1000);
-    achteruit(64);
-    _delay_ms(2000);
-    draai('L',64);
+    while(1)
+    {
+        vooruit(128);
+        while(!(PINB & 0b00000001 | PINC & 0b01000000));// zolang de bumper niets raakt doet hij dit.
+        stop();
+        _delay_ms(1000);
+        achteruit(64);
+        _delay_ms(2000);
+        draai('L',64);
+        _delay_ms(3000);
+    }
 }
 void vooruit(uint8_t snelheid)
 {
@@ -79,7 +83,5 @@ void draai(char richting, uint8_t snelheid)
     OCR1AL = snelheid;//stelt het compare register gelijk aan de ingevoerde waarde. dit bepaalt de snelheid.
     OCR1BH = 0;//we gebruiken maar 8 bits dus het hoge register is niet nodig. voor de zekerheid op 0.
     OCR1BL = snelheid;//stelt het compare register gelijk aan de ingevoerde waarde. dit bepaalt de snelheid.
-    _delay_ms(3000);
-    rijden();
 }
 
