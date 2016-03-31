@@ -38,7 +38,7 @@ unsigned long currenttime()
 void pingklok_aan()
 {
     //TCCR1A is 0.
-    TCCR1B = (1<<CS10)//prescaler is 8.
+    TCCR1B = (1<<CS11)//prescaler is 8.
     //TCCR1C is 0.
 }
 
