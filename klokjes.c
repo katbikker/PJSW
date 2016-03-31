@@ -45,11 +45,17 @@ void pingklok_aan()
 unsigned int return_microseconden_en_pingklok_uit()
 {
     unsigned int i;
+
     cli();//16bit register uitlezen dus liever geen interrupt.
     i = TCNT1;//stel i gelijk aan aantal klokpulsen.
     sei();//zet interrupts weer aan.
+
     TCCR1B = 0;//zet klok uit.
+
+    cli();//16bit register schrijven dus liever geen interrupt.
     TCNT1 = 0;// zet klok weer op 0.
+    sei();//zet interrupts weer aan.
+
     i = i / 2;//prescaler is 8. cpu frequentie is 16mhz. 16*10^6 / 10^6 / 8 = 2 dus 2 pulsen per microseconde.
     return i;
 }
