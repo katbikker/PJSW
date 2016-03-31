@@ -4,7 +4,7 @@
 
 volatile unsigned long milliseconden;//globale variabele.
 
-ISR(TIMER0_COMPA_vect)//timer0 overflow.
+ISR(TIMER0_COMPA_vect)//timer0 compare.
 {
     milliseconden++;
 }
