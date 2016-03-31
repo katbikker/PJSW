@@ -4,7 +4,7 @@
 
 volatile unsigned long milliseconden;//globale variabele.
 
-ISR(TIMER0_OVF_vect)//timer0 overflow.
+ISR(TIMER0_COMPA_vect)//timer0 overflow.
 {
     milliseconden++;
 }
@@ -24,10 +24,10 @@ int main(void)
 
 void initcurrenttime()
 {
-    TCCR0A |= (1<<WGM1);//ctc modus.
+    TCCR0A |= (1<<WGM01);//ctc modus.
     TCCR0B |= (1<<CS01) | (1<<CS00);//prescaler 64.
-    OCR0A = 249;//16000000HZ dus 16000 pulsen per milliseconden. 16000 / 64 = 250. -1 want de overflow van 249 naar 0 is ook een puls.
-    TIMSK0 = (1<< TOIE0);//enable overflow interrupt.
+    OCR0A = 249;//16000000HZ dus 16000 pulsen per milliseconden. 16000 / 64 = 250. -1 want de stap van 249 naar 0 is ook een puls.
+    TIMSK0 = (1<<OCIE0A);//enable compare interrupt.
 }
 
 unsigned long currenttime()
