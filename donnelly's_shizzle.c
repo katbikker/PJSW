@@ -79,7 +79,6 @@ double ping()
     PORTL |= (1 << 1); //ping high. pin d5 is verbonden met sensor
     _delay_us(5); //delay 4 microseconden
     PORTL &= ~(1 << 1); //ping low. pin d5 is verbonden met sensor
-    _delay_us(5);
 
     /*wacht op echo*/
     DDRL = 0; //d alles input
