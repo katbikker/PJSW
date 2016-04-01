@@ -3,18 +3,21 @@
 #include <avr/io.h>
 #include <util/delay.h>
 
-volatile unsigned long milliseconden;//globale variabele.
+volatile unsigned long milliseconden; //globale variabele.
 
-ISR(TIMER0_COMPA_vect)//timer0 compare.
+ISR(TIMER0_COMPA_vect) //timer0 compare.
 {
     milliseconden++;
 }
 
+/* prototypes */
+void trns(unsigned char c);
 unsigned long currenttime();
 void initcurrenttime();
 unsigned int return_microseconden_en_pingklok_uit();
 void pingklok_aan();
 unsigned double ping();
+void USART_Init();
 
 int main(void)
 {
@@ -23,20 +26,41 @@ int main(void)
     unsigned long prevTime;
     unsigned double afstand;
 
-
-
-    while(1)
+	while(1)
     {
         prevTime = currenttime();
         while((prevTime + 1000) >= currenttime());
-        afstand = ping();
-        //shit versturen
+        afstand = ping(); //afstand wordt distance
+      if(afstand < 7)
+      {
+        trns('s');//stevenkinderlokker
+        trns('t');
+        trns('o');
+        trns('p');
+      }
+      else
+      {
+        trns('r');
+        trns('i');
+        trns('j');
+        trns('d');
+        trns('e');
+        trns('n');
+      }
+      trns('\n');
     }
+  
+	return 0;
+}
+void USART_Init()
+{
+  UBRR0L=103; //baud rate 9600 bij (16.0000MHz)
 
+  UCSR0B = (1<<RXEN0) | (1<<TXEN0); 		// Enable de receive and transmit data (register B)
+  UCSR0C = (1<<UCSZ00) | (1<<UCSZ01);		// 8 data bits and 1 stop bit (register C)
 
-
-
-    return 0;
+  DDRB = 0xFF;		//Zet port B als Output
+  PORTB = 0x00; 	//PortB op LOW(input) zetten
 }
 
 unsigned double ping()
@@ -51,7 +75,7 @@ unsigned double ping()
 
     /*wacht op echo*/
     DDRD = 0; //d alles input
-    pingklok_aan(); //start timer1 (16-bit)
+    pingklok_aan(); //start 16-bit timer
 
     /*ultrasoon signaal wordt ontvangen */
     while ((PIND & (1 << 5)) == 0);
@@ -96,4 +120,10 @@ void initcurrenttime()
 unsigned long currenttime()
 {
     return milliseconden;
+}
+
+void trns(unsigned char c){
+   while((UCSR0A & (1<<UDRE0)) == 0); //Wacht tot het register leeg is
+   UDR0 = c; // char weer opsturen (UDR = USART data register)
+   PORTB = 0b01000000; //PortB6 aan (pin 12)
 }
