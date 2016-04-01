@@ -17,7 +17,7 @@ int main(void)
     void pingklok_aan();
     unsigned int return_microseconden_en_pingklok_uit();
 
-    sei();//ergens in code moet je zetten.
+    sei();//dit moet je ergens in je code zetten.
 
     return 0;
 }
@@ -38,7 +38,7 @@ unsigned long currenttime()
 void pingklok_aan()
 {
     //TCCR1A is 0.
-    TCCR1B = (1<<CS11)//prescaler is 8.
+    TCCR1B = (1<<CS11);//prescaler is 8.
     //TCCR1C is 0.
 }
 
