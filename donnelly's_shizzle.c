@@ -24,7 +24,7 @@ int main(void)
 {
     sei(); //set global interrupt flag
     initcurrenttime();
-  	USART_Init();
+    USART_Init();
     unsigned long prevTime;
     unsigned int afstand;
 
@@ -70,19 +70,22 @@ double ping()
     unsigned int echoTime;
     double distance;
     /*stuur ultrasoon signaal*/
-    DDRD = 255; //d alles output
-    PORTD |= (1 << 5); //ping high. pin d5 is verbonden met sensor
-    _delay_us(4); //delay 4 microseconden
-    PORTD &= ~(1 << 5); //ping low. pin d5 is verbonden met sensor
+    DDRL = 255; //d alles output
+    PORTL &= ~(1 << 1);
+    _delay_us(2); //delay 4 microseconden
+    PORTL |= (1 << 1); //ping high. pin d5 is verbonden met sensor
+    _delay_us(5); //delay 4 microseconden
+    PORTL &= ~(1 << 1); //ping low. pin d5 is verbonden met sensor
+    _delay_us(5);
 
     /*wacht op echo*/
-    DDRD = 0; //d alles input
+    DDRL = 0; //d alles input
     pingklok_aan(); //start 16-bit timer
 
     /*ultrasoon signaal wordt ontvangen */
-    while ((PIND & (1 << 5)) == 0);
+    while ((PINL & (1 << 1)) == 1);
     echoTime = return_microseconden_en_pingklok_uit();
-    distance = echoTime * 0,03435; //reken afstand uit in cm
+    distance = (double)echoTime / 29 / 2; //reken afstand uit in cm
     return distance;
 }
 
