@@ -26,7 +26,7 @@ int main(void)
     initcurrenttime();
     USART_Init();
     unsigned long prevTime;
-    unsigned int afstand;
+    double afstand;
 
 	while(1)
     {
