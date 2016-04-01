@@ -23,6 +23,7 @@ int main(void)
 {
     sei();
     initcurrenttime();
+    USART_Init();
     unsigned long prevTime;
     unsigned double afstand;
 
