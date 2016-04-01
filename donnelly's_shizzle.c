@@ -19,6 +19,7 @@ unsigned int return_microseconden_en_pingklok_uit();
 void pingklok_aan();
 double ping();
 void USART_Init();
+void trnss(char *pointer)//VERANDERING!!!!!!!!OMG!!!!!!!!!!!!!!!
 
 int main(void)
 {
@@ -49,6 +50,8 @@ int main(void)
         trns('e');
         trns('n');
       }
+      trns('\n');
+      trnss("stevenkinderlokker");//VERANDERING!!!!!!!!OMG!!!!!!!!!!!!!!!
       trns('\n');
     }
 
@@ -83,7 +86,7 @@ double ping()
     pingklok_aan(); //start 16-bit timer
 
     /*ultrasoon signaal wordt ontvangen */
-    while ((PINL & (1 << 1)) == 1);
+    while ((PINL & (1 << 1)) == 1);//VERANDERING!!!!!!!!OMG!!!!!!!!!!!!!!!
     echoTime = return_microseconden_en_pingklok_uit();
     distance = (double)echoTime / 29 / 2; //reken afstand uit in cm
     return distance;
@@ -132,3 +135,11 @@ void trns(unsigned char c){
    UDR0 = c; // char weer opsturen (UDR = USART data register)
    PORTB = 0b01000000; //PortB6 aan (pin 12)
 }
+void trnss(char *pointer)//VERANDERING!!!!!!!!OMG!!!!!!!!!!!!!!!
+{
+   while (*pointer != 0x00)
+   {
+      trns(*pointer);
+      pointer++;
+   }
+} 
