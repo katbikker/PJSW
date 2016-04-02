@@ -6,13 +6,15 @@
 
 volatile unsigned long milliseconden; //global variable
 
-double ping();
 unsigned long currentTime();
+void currentTimeInit();
+
+void pingClockEnable(); //enable timer
 unsigned int returnUsAndPingClockDisable();
 
+double ping();
+
 void usartInit(); //enable usart
-void pingClockEnable(); //enable timer
-void currentTimeInit();
 void transmitChar(unsigned char c);
 void transmitStr(char *pointer)
 
@@ -109,11 +111,11 @@ double ping()
 
     /* send ultrasonic signal */
     DDRL = 255; //d alles output
-    PORTL &= ~(1 << 1);
-    _delay_us(2);
-    PORTL |= (1 << 1); //ping high. pin l1 is verbonden met sensor
-    _delay_us(5);
-    PORTL &= ~(1 << 1); 
+    PORTL &= ~(1 << 1); //pin l1 low, clean signal
+    _delay_us(1);
+    PORTL |= (1 << 1); //pin l1 high, send signal
+    _delay_us(4);
+    PORTL &= ~(1 << 1); //pin l1 low
 
     /*wait for input */
     DDRL = 0; //ddrl input
