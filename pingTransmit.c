@@ -1,8 +1,8 @@
+#define F_CPU 16000000
+
 #include <avr/io.h>
 #include <util/delay.h>
 #include <avr/interrupt.h>
-
-#define F_CPU 16000000
 
 volatile unsigned long milliseconden; //global variable
 
@@ -15,8 +15,8 @@ unsigned int returnUsAndPingClockDisable();
 double ping();
 
 void usartInit(); //enable usart
-void transmitChar(unsigned char c);
-void transmitStr(char *pointer)
+void trnsmitChar(unsigned char c);
+//void trnsmitStr(char *pointer)
 
 /* isr */
 ISR(TIMER0_COMPA_vect) //timer0 compare vector
@@ -44,23 +44,24 @@ int main(void)
 
             if(distanceInCm < 7)
             {
-                transmitChar('s');
-                transmitChar('t');
-                transmitChar('o');
-                transmitChar('p');
+                trnsmitChar('s');
+                trnsmitChar('t');
+                trnsmitChar('o');
+                trnsmitChar('p');
             }
             else
             {
-                transmitChar('g');
-                transmitChar('o');
+                trnsmitChar('g');
+                trnsmitChar('o');
             }
 
-            transmitChar('\n');
-            transmitStr("testStr"); //test string
-            transmitChar('\n');
+            trnsmitChar('e'); //test char
+            //trnsmitStr("testStr"); //test string
+            trnsmitChar('\n');
         }
 
         return 0;
+    }
 }
 
 unsigned long currentTime()
@@ -124,8 +125,8 @@ double ping()
     pingClockEnable(); //start 16-bit timer
 
     /*ultrasoon signaal wordt ontvangen */
-    while ((PINL & (1 << 1)) == 1);//VERANDERING!!!!!!!!OMG!!!!!!!!!!!!!!!
-    echoTime = returnUsAndPingClockDisable()
+    while ((PINL & (1 << 1)) == 1); //VERANDERING!!!!!!!!OMG!!!!!!!!!!!!!!!
+    echoTime = returnUsAndPingClockDisable();
     distance = (double)echoTime / 29 / 2; //reken afstand uit in cm
     return distance;
 }
@@ -143,19 +144,19 @@ void usartInit()
 }
 
 /* transmit character */
-void transmitChar(unsigned char c)
+void trnsmitChar(unsigned char c)
 {
     while((UCSR0A & (1<<UDRE0)) == 0); //Wacht tot het register leeg is
     UDR0 = c; // char weer opsturen (UDR = USART data register)
     PORTB = 0b01000000; //PortB6 aan (pin 12)
 }
 
-/* transmit string */
-void transmitStr(char *pointer)//VERANDERING!!!!!!!!OMG!!!!!!!!!!!!!!!
+/* transmit string
+void trnsmitStr(char *pointer)//VERANDERING!!!!!!!!OMG!!!!!!!!!!!!!!!
 {
    while (*pointer != 0x00)
    {
-      transmitChar(*pointer);
+      trnsmitChar(*pointer);
       pointer++;
    }
-}
+}*/
