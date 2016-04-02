@@ -121,6 +121,8 @@ double ping()
     /*wait for input */
     DDRL = 0; //ddrl input
 
+    while ((PINL & (1 << 1)) == 0); //VERANDERING!!!!!!!!OMG!!!!!!!!!!!!!!!WACHTEN OP SIGNAAL
+
     /* start timer */
     pingClockEnable(); //start 16-bit timer
 
