@@ -108,10 +108,12 @@ double ping()
     double distance;
 
     /* send ultrasonic signal */
-    DDRL = 255; //ddrl output
-    PORTL |= (1 << 1); //enable ping (pin l1)
+    DDRL = 255; //d alles output
+    PORTL &= ~(1 << 1);
+    _delay_us(2);
+    PORTL |= (1 << 1); //ping high. pin l1 is verbonden met sensor
     _delay_us(5);
-    PORTL &= ~(1 << 1); //disable ping (pin l1)
+    PORTL &= ~(1 << 1); 
 
     /*wait for input */
     DDRL = 0; //ddrl input
