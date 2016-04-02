@@ -27,9 +27,9 @@ int main(void)
 {
     sei(); //set global interrupt flag
     currentTimeInit();
-  	usartInit();
+    usartInit();
 
-  	unsigned long prevTime;
+    unsigned long prevTime;
     double distanceInCm;
 
     while(1)
@@ -113,24 +113,17 @@ double ping()
     _delay_us(5);
     PORTL &= ~(1 << 1); //disable ping (pin l1)
 
-    /* start timer */
-    pingClockEnable(); //start 16-bit timer
-
     /*wait for input */
     DDRL = 0; //ddrl input
 
-    while((PINL & (1 << 1)) == 0)
-    {
-    }
+    /* start timer */
+    pingClockEnable(); //start 16-bit timer
 
-    /* receive ultrasonic signal and return distance*/
-    while((PINL & (1 << 1)) == 1)
-    {
-        echoTime = returnUsAndPingClockDisable();
-        distance = (double)echoTime / 29 / 2; //reken afstand uit in cm
-
-        return distance;
-    }
+    /*ultrasoon signaal wordt ontvangen */
+    while ((PINL & (1 << 1)) == 1);//VERANDERING!!!!!!!!OMG!!!!!!!!!!!!!!!
+    echoTime = returnUsAndPingClockDisable()
+    distance = (double)echoTime / 29 / 2; //reken afstand uit in cm
+    return distance;
 }
 
 /* enable usart */
