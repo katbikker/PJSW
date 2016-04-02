@@ -40,27 +40,31 @@ int main(void)
 
         while((prevTime + 1000) >= currentTime())
         {
+            
             distanceInCm = ping();
 
             if(distanceInCm < 7)
             {
-                trnsmitChar('s');
-                trnsmitChar('t');
-                trnsmitChar('o');
-                trnsmitChar('p');
+                trnsmitChar('S');
+                trnsmitChar('T');
+                trnsmitChar('O');
+                trnsmitChar('P');             
+                trnsmitChar('\n');
+                _delay_ms(500);
             }
             else
             {
-                trnsmitChar('g');
-                trnsmitChar('o');
+                trnsmitChar('G');
+                trnsmitChar('O');
+                trnsmitChar('\n');
+                _delay_ms(500);
             }
-
-            trnsmitChar('e'); //test char
-            //trnsmitStr("testStr"); //test string
+            
+            trnsmitChar('\n');
+            Serial.print(distanceInCm);
             trnsmitChar('\n');
         }
-
-        return 0;
+        //return 0;
     }
 }
 
@@ -127,7 +131,7 @@ double ping()
     pingClockEnable(); //start 16-bit timer
 
     /*ultrasoon signaal wordt ontvangen */
-    while ((PINL & (1 << 1)) == 1); //VERANDERING!!!!!!!!OMG!!!!!!!!!!!!!!!
+    while ((PINL & (1 << 1)) != 0); //VERANDERING!!!!!!!!OMG!!!!!!!!!!!!!!!
     echoTime = returnUsAndPingClockDisable();
     distance = (double)echoTime / 29 / 2; //reken afstand uit in cm
     return distance;
