@@ -4,7 +4,7 @@
 
 volatile uint8_t RP6Opdracht;//RP6 Opdracht Register
 //bit7 noodsituatie   1 = noodsituatie
-//bit6
+//bit6 bumper informatie opvragen
 //bit5
 //bit4 stuurrichting. 1 = links         0 = rechts
 //bit3 sturen         1 = sturen        0 = rechtdoor
@@ -116,15 +116,41 @@ ISR(USART0_RX_vect)//usart ontvangt iets
                 }
             break;
             case 'a' :
+                if((RP6Opdracht & (1<<3)) == 0)//als hij rechtdooor aan het rijden is
+                {
+                    RP6Opdracht |= (1<<3) | (1<<4);//stuur naar links
+                }
+                else if((RP6Opdracht & (1<<4)) == 0)//als hij naar rechts aan het sturen is
+                {
+                    RP6Opdracht |= (1<<4);//stuur naar links
+                }
+                else//als hij naar links aan het sturen is
+                {
+                    RP6Opdracht &= ~(1<<3) & ~(1<<4);//stop met sturen
+                }
             break;
             case 'd' :
+
+                if((RP6Opdracht & (1<<3)) == 0)//als hij rechtdooor aan het rijden is
+                {
+                    RP6Opdracht |= (1<<3);//stuur naar rechts
+                    RP6Opdracht &= ~(1<<4);
+                }
+                else if((RP6Opdracht & (1<<4)) != 0)//als hij naar links aan het sturen is
+                {
+                    RP6Opdracht &= ~(1<<4);//stuur naar rechts
+                }
+                else//als hij naar rechts aan het sturen is
+                {
+                    RP6Opdracht &= ~(1<<3) & ~(1<<4);//stop met sturen
+                }
             break;
             default :
-            trnsmitChar('w');
-            trnsmitChar('a');
-            trnsmitChar('s');
-            trnsmitChar('d');
-            trnsmitChar('\n');
+                trnsmitChar('w');
+                trnsmitChar('a');
+                trnsmitChar('s');
+                trnsmitChar('d');
+                trnsmitChar('\n');
         }
     }
     else
