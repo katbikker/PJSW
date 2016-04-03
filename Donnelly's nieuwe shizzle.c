@@ -26,6 +26,11 @@ void usartInit(); //enable usart
 void trnsmitChar(unsigned char c);
 void noodsituatie();
 
+ISR(TIMER0_COMPA_vect) //timer0 compare vector
+{
+    milliseconden++;
+}
+
 ISR(USART0_RX_vect)//usart ontvangt iets
 {
     char c;
@@ -219,7 +224,7 @@ void usartInit()
 {
     UBRR0L = 103; //baud rate 9600, F_CPU 16000000
 
-    UCSR0B = (1<<RXEN0) | (1<<TXEN0) | (1<<RXCIE0); //enable receive data and transmit data
+    UCSR0B = (1<<RXEN0) | (1<<TXEN0) | (1<<RXCIE0); //enable receive data and transmit data en receive interrupt
     UCSR0C = (1<<UCSZ00) | (1<<UCSZ01); //8 data bits and 1 stop bit
 
     DDRB = 0xFF; //Zet port B als Output
@@ -307,7 +312,7 @@ void noodsituatie()
 {
     unsigned long prevTime;
 
-    RP6Opdracht = 0b10000000;
+    RP6Opdracht = 0b10000000;//robot staat stil en accepteert geen input meer
     //stuur shit
     trnsmitChar('n');
     trnsmitChar('o');
@@ -324,14 +329,14 @@ void noodsituatie()
     trnsmitChar('\n');
 
     prevTime = currentTime();
-    while((prevTime + 30000) >= currentTime());
+    while((prevTime + 30000) >= currentTime());//wacht 30 seconden
 
-    RP6Opdracht |= (1<<3) | (1<<4);
+    RP6Opdracht |= (1<<3) | (1<<4);//robot draait tegen de klok in
     //stuur shit
-    RP6Opdracht |= 0b10000000;
+    
     //wachten tot hij ver genoeg gedraait is
 
-    RP6Opdracht = 0b10000000;
+    RP6Opdracht = 0b10000000;//robot staat stil
     //stuur shit
-    RP6Opdracht = 0;
+    RP6Opdracht = 0;//robot accepteert input
 }
