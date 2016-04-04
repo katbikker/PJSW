@@ -8,7 +8,7 @@ KOMPAS (zie http://www.robot-electronics.co.uk/htm/cmps3tech.htm)
 
 void kompas(void)
 {
-    verzenden(/* KOMPAS + bit0 = 0 (W) */, KOMPAS_REG2, /* KOMPAS + bit0 = 1 (R) */);
+    verzenden(/* KOMPAS + (bit0 = 0) W */, KOMPAS_REG2, /* KOMPAS + (bit0 = 1) R */;
     for(uint8_t i = 0; i < 8; i++) _delay_ms(250);
     
     ontvangen(MASTER_ADRES, data, 2); //master ontvangt 2 bytes van slave (register 2,3)
