@@ -1,4 +1,4 @@
-KOMPAS (zie http://www.robot-electronics.co.uk/htm/cmps3tech.htm)
+//KOMPAS (zie http://www.robot-electronics.co.uk/htm/cmps3tech.htm)
 
 #define MASTER_ADRES 0x08 //2560 master adres = 8
 #define KOMPAS 0x60 //1100000 = 0x60, 1100000 + R/W bit = 11000000 (0xC0 = 192, bit0 = 0 write) or 11000001 (0xC1 = 193, bit0 = 1 read)
