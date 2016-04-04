@@ -168,7 +168,7 @@ ISR(USART0_RX_vect)//usart ontvangt iets
                 }
                 break;
             case 't' :
-                autonoom();
+                RP6Opdracht |= (1<<5);
                 break;
             case 'r' :
                 if((RP6Opdracht & 0b00000011) == 0)
@@ -249,6 +249,11 @@ int main(void)
     while(1);
     {
         prevTime = currentTime();
+        
+        if((RP6Opdracht & (1<<5)) != 0)
+        {
+            autonoom();
+        }
 
         while((prevTime + 50) >= currentTime());//kijk 20 keer per seconde of de robot in gevaar is
         distanceInCm = ping();
@@ -276,8 +281,6 @@ int main(void)
 void autonoom()
 {
     unsigned long prevTime;
-    RP6Opdracht = 0b00100000;
-    //stuur shit
 
     while(RP6Opdracht & (1<<5) != 0)
     {
