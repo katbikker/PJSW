@@ -170,12 +170,51 @@ ISR(USART0_RX_vect)//usart ontvangt iets
             case 't' :
                 autonoom();
                 break;
+            case 'r' :
+                if((RP6Opdracht & 0b00000011) == 0)
+                {
+                    trnsmitChar('0');
+                    trnsmitChar(' ');
+                    trnsmitChar('m');
+                    trnsmitChar('/');
+                    trnsmitChar('s');
+                    trnsmitChar('\n');
+                }
+                else if((RP6Opdracht & 0b00000011) == 1)
+                {
+                    trnsmitChar('1');// niet correct
+                    trnsmitChar(' ');
+                    trnsmitChar('m');
+                    trnsmitChar('/');
+                    trnsmitChar('s');
+                    trnsmitChar('\n');
+                }
+                else if((RP6Opdracht & 0b00000011) == 2)
+                {
+                    trnsmitChar('2');// niet correct
+                    trnsmitChar(' ');
+                    trnsmitChar('m');
+                    trnsmitChar('/');
+                    trnsmitChar('s');
+                    trnsmitChar('\n');
+                }
+                else
+                {
+                    trnsmitChar('3');// niet correct
+                    trnsmitChar(' ');
+                    trnsmitChar('m');
+                    trnsmitChar('/');
+                    trnsmitChar('s');
+                    trnsmitChar('\n');
+                }
+                break;
             default :
                 trnsmitChar('w');
                 trnsmitChar('a');
                 trnsmitChar('s');
                 trnsmitChar('d');
                 trnsmitChar('t');
+                trnsmitChar('r');
                 trnsmitChar('\n');
             }
         }
