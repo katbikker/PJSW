@@ -22,7 +22,7 @@ void kompas(void)
 
 void calKompas(void)
 {
-    verzenden(/* KOMPAS + bit0 = 0 (W) */, KOMPAS_COMREG, 0xFF);
+    verzenden(/* KOMPAS + (bit0 = 0, write) */, KOMPAS_COMREG, 0xFF);
     for(uint8_t i = 0; i < 8; i++) _delay_ms(250);
 }
 
