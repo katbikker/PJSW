@@ -324,7 +324,7 @@ void autonoom()
 
 
     }
-
+    RP6Opdracht = 0b00000000;
 
 }
 
