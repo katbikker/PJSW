@@ -18,7 +18,6 @@ volatile uint8_t RP6Opdracht;//RP6 Opdracht Register
 
 
 unsigned long currentTime();
-(1<<6)
 void currentTimeInit();
 void pingClockEnable(); //enable timer
 unsigned int returnUsAndPingClockDisable();
@@ -145,10 +144,6 @@ ISR(USART0_RX_vect)//usart ontvangt iets
                 }
                 else if((RP6Opdracht & (1<<4)) == 0)//als hij naar rechts aan het sturen is
                 {
-                    RP6Opdracht |= (1<<4);//stuur naar links
-                }
-                else//als hij naar links aan het sturen is
-                {
                     RP6Opdracht &= ~(1<<3) & ~(1<<4);//stop met sturen
                 }
                 break;
@@ -159,10 +154,6 @@ ISR(USART0_RX_vect)//usart ontvangt iets
                     RP6Opdracht &= ~(1<<4);
                 }
                 else if((RP6Opdracht & (1<<4)) != 0)//als hij naar links aan het sturen is
-                {
-                    RP6Opdracht &= ~(1<<4);//stuur naar rechts
-                }
-                else//als hij naar rechts aan het sturen is
                 {
                     RP6Opdracht &= ~(1<<3) & ~(1<<4);//stop met sturen
                 }
