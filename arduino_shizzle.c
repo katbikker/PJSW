@@ -237,7 +237,7 @@ int main(void)
     usartInit();
     currentTimeInit();
 
-    while(1);
+    while(1)
     {
         prevTime = currentTime();
         
@@ -278,7 +278,7 @@ void autonoom()
         RP6Opdracht = 0b00100010;//rechtdoor
         //stuur shit
 
-        while(1);
+        while(1)
         {
             prevTime = currentTime();
 
