@@ -10,7 +10,7 @@ motor_init();
 //              shit ontvangen                   //
 ///////////////////////////////////////////////////
 
-if((ontvangen & (1<<5)) != 0)//bumper check
+if((ontvangen & (1<<6)) != 0)//bumper check
 {
     if((PINB & 0b00000001 | PINC & 0b01000000)
     {
@@ -42,7 +42,7 @@ else
 
     if((snelheid > 0) || ((ontvangen & (1<<3)) != 0))//niet stilstaan
     {
-        pwmklok()
+        pwmklok();
     }
     else//stilstaan
     {
