@@ -320,7 +320,7 @@ void autonoom()
             ontvangen(DEVICE_ADRES,data,1);
             if(data[0] == 255)
             {
-                noodsituatie();
+                break;
             }
         }
         RP6Opdracht[0] |= (1<<2);//achteruit
